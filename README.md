@@ -88,11 +88,16 @@ var myObj = (MyClass)json;
 ### Extract `DateTime` like a boss
 
 ````cs
-var json = DJson.Parse(@"{ ""time"": ""2020-09-23T21:12:16Z"", ""unix"": 1600895536, ""unix_ms"": 1600895536123 }");
+var json = DJson.Parse(@"
+{
+    ""time"": ""2020-09-23T21:12:16Z"",
+    ""unix_time"": 1600895536,
+    ""unix_time_ms"": 1600895536123
+}");
 
 DateTime time = json.Time;
-DateTime unixTime = json.Unix; // DJson automatically detects if it's Unix time in seconds
-DateTime unixTimeMs = json.UnixMs; // or if it's Unix time in milliseconds
+DateTime unixTime = json.UnixTime; // DJson automatically detects if it's Unix time in seconds
+DateTime unixTimeMs = json.UnixTimeMs; // or if it's Unix time in milliseconds
 ````
 
 ## What about performance?
@@ -109,5 +114,8 @@ One can think that using dynamic wrapper brings a huge overhead, **but it's actu
 
 Of course, using `.Deserialize<T>()` would be even faster, but we're only talking about dynamic-like access, when you will likely spend a lot more time describing the types do deserialize your JSON to.
 
-## Cheers 
-🍻
+## Contributing
+
+Feel free to create issues, feature requests and pull requests.
+
+Cheers 🍻
