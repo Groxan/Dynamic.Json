@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>DJson</PackageId>
+    <PackageTags>dynamic json deserialization</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Groxan/DJson</PackageProjectUrl>
+
+    <RepositoryUrl>https://github.com/Groxan/DJson</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <Authors>Groxan</Authors>
+    <Product>DJson</Product>
+    <Description>Dynamic JSON wrapper for super-neat, fast and low-allocating working with JSON, based on the new System.Text.Json (.NET Standard 2.0)</Description>
+    <Version>1.0.0</Version>
+    <Copyright>Copyright © Maksim Strebkov</Copyright>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="5.0.0-rc.1.20451.14" />
+  </ItemGroup>
+
+</Project>
