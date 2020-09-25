@@ -16,7 +16,7 @@
     <Authors>Groxan</Authors>
     <Product>DJson</Product>
     <Description>Dynamic JSON wrapper for super-neat, fast and low-allocating working with JSON, based on the new System.Text.Json (.NET Standard 2.0)</Description>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Copyright>Copyright © Maksim Strebkov</Copyright>
   </PropertyGroup>
   
