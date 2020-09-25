@@ -16,14 +16,14 @@ This library is especially useful for prototyping and scripting when you have to
 ### Instantiate dynamic json:
 
 ````cs
-// parse json from string/stream/etc
+// parse json from string/stream/etc, for example
 var json = DJson.Parse(@"
 {
-    ""numValue"": 1,
-    ""string_value"": ""qwerty"",
-    ""array"": [ 1, 2, 3 ],
-    ""object"": {
-        ""value"": false
+    ""versionNumber"": 1,
+    ""product_name"": ""qwerty"",
+    ""items"": [ 1, 2, 3 ],
+    ""settings"": {
+        ""enabled"": false
     }
 }");
 
@@ -39,53 +39,65 @@ var json = await httpClient.GetJsonAsync("https://api.com/endpoint");
 
 ### Use dynamic json as a normal class
 
+You can access json props either like class properties (`json.someProperty`) or like dictionary elements (`json["someProperty"]`). Both methods are identical, however, the first one looks better :)
+
 ````cs
-var val = json.numValue;
-var str = json.string_value;
-var arr = json.array[1];
-var len = json.array.length; //or .count
-var obj = json.object.value;
+int version = json.versionNumber;
+string name = json.product_name;
+int item = json.items[1];
+int length = json.items.length; //or json.items.count, as you prefer
+bool enabled = json.settings.enabled;
 ````
 
-### Access props using PascalCase (it's C#, baby)
+### Flexible naming convention
+
+`camelCase` and `snake_case` are common naming styles in JSON, but uncommon in C# where we use `PascalCase` for public properties. Therefore, **for perfectionists** like me `DJson` allows to access json props not only by their original names (e.g. `json.ip_endpoint`), but also by its **PascalCase** version (e.g. `json.IPEndpoint`). `DJson` will try to resolve names automatically.
 
 ````cs
-var val = json.NumValue;
-var str = json.StringValue;
-var arr = json.Array[1];
-var len = json.Array.Length; //or .Count
-var obj = json.Object.Value;
+var val = json.VersionNumber;
+var str = json.ProductName;
+var arr = json.Items[1];
+var len = json.Items.Length; //or .Count
+var obj = json.Settings.Enabled;
 ````
 
 ### Enumerate arrays
 
+You can enumerate json arrays in `foreach` or by implicit conversion to `IEnumerable<dynamic>`.
+
 ````cs
-foreach (var item in json.Array)
+foreach (var item in json.Items)
     Console.WriteLine($"{item}");
 
-var arr = (IEnumerable<dynamic>)json.Array;
-var sum = arr.Where(x => x > 1).Sum(x => x);
+var items = (IEnumerable<dynamic>)json.Items;
+var sum = items.Where(x => x > 1).Sum(x => x);
 ````
 
 ### Enumerate objects
 
+You can enumerate json object props `(string Name, dynamic Value)` in `foreach` or by implicit conversion to `IEnumerable<dynamic>`.
+
 ````cs
-foreach (var prop in json.Object)
+foreach (var prop in json.Settings)
     Console.WriteLine($"{prop.Name}: {prop.Value}");
 
-var arr = (IEnumerable<dynamic>)json.Object;
-var props = arr.Where(x => !x.Value).Select(x => x.Name);
+var props = (IEnumerable<dynamic>)json.Settings;
+var names = props.Where(x => !x.Value).Select(x => x.Name);
 ````
 
 ### Convert dynamic json to any valid type
 
+While conversion to all built-in C# types is pretty transparent, you can also serialize json to any other type using implicit conversion.
+
 ````cs
-var num = (string)json.NumValue;
-var list = (List<int>)json.Array;
-var myObj = (MyClass)json;
+var list = (List<int>)json.Items; // dynamic array -> List<int>
+var settings = (MyClass)json.Settings; // dynamic object -> MyClass
+var obj = (AnotherType)json;
 ````
 
 ### Extract `DateTime` like a boss
+
+People often use Unix time format in JSON and that's quite annoying to convert it to `DateTime`, so `DJson` does this for you automatically.
 
 ````cs
 var json = DJson.Parse(@"
