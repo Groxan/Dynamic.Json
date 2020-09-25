@@ -30,7 +30,9 @@ namespace DJson
         /// <returns></returns>
         public override string ToString()
         {
-            return Element.GetRawText();
+            return Element.ValueKind == JsonValueKind.String
+                ? Element.GetString()
+                : Element.GetRawText();
         }
 
         #region parse
