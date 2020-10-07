@@ -5,6 +5,15 @@ namespace DJson.Tests
     public class TestNaming
     {
         [Fact]
+        public void TestReservedWords()
+        {
+            var json = DJson.Parse(@"{ ""int"": 123, ""string"": ""qwerty"" }");
+
+            Assert.Equal(123, json.@int);
+            Assert.Equal("qwerty", json.@string);
+        }
+
+        [Fact]
         public void TestCamelCase()
         {
             var json = DJson.Parse(@"{ ""camel"": true, ""camelCase"": true, ""ipEndpoint"": true, ""userId"": true }");
