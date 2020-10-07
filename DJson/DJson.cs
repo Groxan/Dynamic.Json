@@ -13,7 +13,7 @@ namespace DJson
     /// Dynamic JSON base class.
     /// Provides static factory methods.
     /// </summary>
-    public class DJson : DynamicObject
+    public abstract class DJson : DynamicObject
     {
         protected readonly JsonElement Element;
         protected readonly JsonSerializerOptions Options;
@@ -34,6 +34,24 @@ namespace DJson
                 ? Element.GetString()
                 : Element.GetRawText();
         }
+
+        #region create
+        public static DJson Create(JsonElement element, JsonSerializerOptions options = null)
+        {
+            switch (element.ValueKind)
+            {
+                case JsonValueKind.Undefined:
+                case JsonValueKind.Null:
+                    return null;
+                case JsonValueKind.Object:
+                    return new DJsonObject(element, options);
+                case JsonValueKind.Array:
+                    return new DJsonArray(element, options);
+                default:
+                    return new DJsonValue(element, options);
+            }
+        }
+        #endregion
 
         #region parse
         /// <summary>
@@ -211,22 +229,6 @@ namespace DJson
             }
         }
         #endregion
-
-        protected static DJson Create(JsonElement element, JsonSerializerOptions options)
-        {
-            switch (element.ValueKind)
-            {
-                case JsonValueKind.Undefined:
-                case JsonValueKind.Null:
-                    return null;
-                case JsonValueKind.Object:
-                    return new DJsonObject(element, options);
-                case JsonValueKind.Array:
-                    return new DJsonArray(element, options);
-                default:
-                    return new DJsonValue(element, options);
-            }
-        }
 
         private static JsonDocumentOptions GetDocumentOptions(JsonSerializerOptions options)
         {
