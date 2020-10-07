@@ -5,18 +5,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>DJson</PackageId>
+    <PackageId>Dynamic.Json</PackageId>
     <PackageTags>dynamic json deserialization</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Groxan/DJson</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Groxan/Dynamic.Json</PackageProjectUrl>
 
-    <RepositoryUrl>https://github.com/Groxan/DJson</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Groxan/Dynamic.Json</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
     <Authors>Groxan</Authors>
-    <Product>DJson</Product>
+    <Product>Dynamic.Json</Product>
     <Description>Dynamic JSON wrapper for super-neat, fast and low-allocating working with JSON, based on the new System.Text.Json (.NET Standard 2.0)</Description>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Copyright>Copyright © Maksim Strebkov</Copyright>
   </PropertyGroup>
   

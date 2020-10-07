@@ -5,7 +5,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text.Json;
 
-namespace DJson
+namespace Dynamic.Json
 {
     public sealed class DJsonObject : DJson, IEnumerable<DJsonProperty>
     {

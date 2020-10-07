@@ -1,4 +1,4 @@
-﻿namespace DJson
+﻿namespace Dynamic.Json
 {
     public sealed class DJsonProperty
     {

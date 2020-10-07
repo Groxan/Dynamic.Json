@@ -1,15 +1,15 @@
-## DJson - dynamic JSON
+## Dynamic JSON
 
-<a href="https://www.nuget.org/packages/DJson/"><img src="https://img.shields.io/nuget/v/DJson.svg" /></a>
+<a href="https://www.nuget.org/packages/Dynamic.Json/"><img src="https://img.shields.io/nuget/v/Dynamic.Json.svg" /></a>
 [![Made With](https://img.shields.io/badge/made%20with-C%23-success.svg?)](https://docs.microsoft.com/en-gb/dotnet/csharp/language-reference/)
-<a href="https://github.com/Groxan/DJson/blob/master/LICENSE"><img src="https://img.shields.io/github/license/groxan/DJson.svg" /></a>
+<a href="https://github.com/Groxan/Dynamic.Json/blob/master/LICENSE"><img src="https://img.shields.io/github/license/groxan/Dynamic.Json.svg" /></a>
 
 This is a .NET Standard 2.0 library providing a lightweight dynamic wrapper for super-neat, fast and low-allocating working with JSON, based on the new `System.Text.Json`.
 
 This library is especially useful for prototyping and scripting when you have to keep the code as clean and easy-to-read as possible.
 
 ## Install
-`PM> Install-Package DJson`
+`PM> Install-Package Dynamic.Json`
 
 ## How to use
 
@@ -114,7 +114,7 @@ DateTime unixTimeMs = json.UnixTimeMs; // or if it's Unix time in milliseconds
 
 ## What about performance?
 
-One can think that using dynamic wrapper brings a huge overhead, **but it's actually not**. [Here is a simple benchmark](https://github.com/Groxan/DJson/blob/master/DJson.Benchmarks/DJsonBenchmarks.cs), comparing `DJson` with `JsonDocument` from `System.Text.Json` and `JToken` from `Newtonsoft.Json`:
+One can think that using dynamic wrapper brings a huge overhead, **but it's actually not**. [Here is a simple benchmark](https://github.com/Groxan/Dynamic.Json/blob/master/Dynamic.Json.Benchmarks/DJsonBenchmarks.cs), comparing `DJson` with `JsonDocument` from `System.Text.Json` and `JToken` from `Newtonsoft.Json`:
 
 ````
 |         Method |     Mean |     Error |    StdDev | Ratio | RatioSD |  Gen 0 | Allocated |

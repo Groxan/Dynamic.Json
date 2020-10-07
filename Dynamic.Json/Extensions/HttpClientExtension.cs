@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Threading;
 
-namespace DJson.Extensions
+namespace Dynamic.Json.Extensions
 {
     public static class HttpClientExtension
     {

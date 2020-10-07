@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xunit;
 
-namespace DJson.Tests
+namespace Dynamic.Json.Tests
 {
     public class TestFactory
     {

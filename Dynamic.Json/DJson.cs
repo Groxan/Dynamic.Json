@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DJson
+namespace Dynamic.Json
 {
     /// <summary>
     /// Dynamic JSON base class.

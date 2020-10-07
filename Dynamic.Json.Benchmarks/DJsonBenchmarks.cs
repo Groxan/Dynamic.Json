@@ -5,7 +5,7 @@ using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using Newtonsoft.Json.Linq;
 
-namespace DJson.Benchmark
+namespace Dynamic.Json.Benchmark
 {
     [MemoryDiagnoser]
     public class DJsonBenchmarks

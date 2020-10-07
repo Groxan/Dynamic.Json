@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace DJson.Tests
+namespace Dynamic.Json.Tests
 {
     public class TestDJsonObject
     {

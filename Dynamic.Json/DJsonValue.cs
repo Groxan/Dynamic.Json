@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Text.Json;
 
-namespace DJson
+namespace Dynamic.Json
 {
     public sealed class DJsonValue : DJson
     {

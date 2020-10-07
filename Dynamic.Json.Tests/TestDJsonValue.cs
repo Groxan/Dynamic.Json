@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace DJson.Tests
+namespace Dynamic.Json.Tests
 {
     public class TestDJsonValue
     {
