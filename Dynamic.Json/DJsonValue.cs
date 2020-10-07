@@ -12,7 +12,7 @@ namespace Dynamic.Json
         public override bool TryConvert(ConvertBinder binder, out object result)
         {
             if (!Extractors.TryGetValue(binder.Type, out var extract) || !extract(Element, out result))
-                throw new FormatException($"Unable to convert {Element.GetRawText()} to {binder.Type.Name}");
+                throw new FormatException($"Unable to convert json value {Element.GetRawText()} to {binder.Type.Name}");
 
             return true;
         }

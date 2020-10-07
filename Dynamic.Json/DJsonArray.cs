@@ -40,7 +40,7 @@ namespace Dynamic.Json
             }
             catch (JsonException ex)
             {
-                throw new FormatException($"Unable to convert {Element.GetRawText()} to {binder.Type.Name}", ex);
+                throw new FormatException($"Unable to convert json array to {binder.Type.Name}", ex);
             }
         }
 
