@@ -44,5 +44,12 @@ namespace Dynamic.Json.Tests
             var list = (List<int>)DJson.Parse(@"{ ""value"": [ 1, 2, 3, 4 ] }").Value;
             Assert.Equal(new List<int> { 1, 2, 3, 4 }, list);
         }
+
+        [Fact]
+        public void TestImplicit()
+        {
+            var json = DJson.Parse(@"{ ""value"": [ 1, 2, 3, 4 ] }");
+            Assert.Equal("[ 1, 2, 3, 4 ]", (string)json.Value);
+        }
     }
 }

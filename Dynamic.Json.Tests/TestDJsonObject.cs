@@ -51,6 +51,13 @@ namespace Dynamic.Json.Tests
             Assert.Equal("qwerty", obj.field);
         }
 
+        [Fact]
+        public void TestImplicit()
+        {
+            var json = DJson.Parse(@"{ ""a"": { ""value"": 1 }, ""b"": { ""value"": 2 } }");
+            Assert.Equal(@"{ ""value"": 1 }", (string)json.a);
+        }
+
         class TestClass
         {
             public string field { get; set; }

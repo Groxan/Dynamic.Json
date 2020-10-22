@@ -51,5 +51,12 @@ namespace Dynamic.Json
         IEnumerator<DJson> IEnumerable<DJson>.GetEnumerator() => Element.EnumerateArray()
             .Select(x => Create(x, Options))
             .GetEnumerator();
+
+        #region implicit
+        public static implicit operator string(DJsonArray json)
+        {
+            return json.Element.GetRawText();
+        }
+        #endregion
     }
 }

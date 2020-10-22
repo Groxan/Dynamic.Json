@@ -67,7 +67,7 @@ namespace Dynamic.Json
         #region conventions
         bool IsPascalCase(string value)
         {
-            return value[0] <= 90 && value[0] >= 65;
+            return value.Length > 0 && value[0] <= 90 && value[0] >= 65;
         }
 
         string PascalToCamelCase(string value)
@@ -123,6 +123,13 @@ namespace Dynamic.Json
             }
 
             return new string(buf.ToArray());
+        }
+        #endregion
+
+        #region implicit
+        public static implicit operator string(DJsonObject json)
+        {
+            return json.Element.GetRawText();
         }
         #endregion
     }
