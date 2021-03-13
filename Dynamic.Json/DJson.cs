@@ -65,8 +65,10 @@ namespace Dynamic.Json
             if (json == null)
                 throw new ArgumentNullException(nameof(json));
 
-            var doc = JsonDocument.Parse(json, GetDocumentOptions(options));
-            return Create(doc.RootElement, options);
+            using (var doc = JsonDocument.Parse(json, GetDocumentOptions(options)))
+            {
+                return Create(doc.RootElement.Clone(), options);
+            }
         }
 
         /// <summary>
@@ -80,8 +82,10 @@ namespace Dynamic.Json
             if (json == null)
                 throw new ArgumentNullException(nameof(json));
 
-            var doc = JsonDocument.Parse(json, GetDocumentOptions(options));
-            return Create(doc.RootElement, options);
+            using (var doc = JsonDocument.Parse(json, GetDocumentOptions(options)))
+            {
+                return Create(doc.RootElement.Clone(), options);
+            }
         }
 
         /// <summary>
@@ -92,8 +96,10 @@ namespace Dynamic.Json
         /// <returns></returns>
         public static dynamic Parse(ReadOnlyMemory<byte> json, JsonSerializerOptions options = null)
         {
-            var doc = JsonDocument.Parse(json, GetDocumentOptions(options));
-            return Create(doc.RootElement, options);
+            using (var doc = JsonDocument.Parse(json, GetDocumentOptions(options)))
+            {
+                return Create(doc.RootElement.Clone(), options);
+            }
         }
 
         /// <summary>
@@ -104,8 +110,10 @@ namespace Dynamic.Json
         /// <returns></returns>
         public static dynamic Parse(ReadOnlyMemory<char> json, JsonSerializerOptions options = null)
         {
-            var doc = JsonDocument.Parse(json, GetDocumentOptions(options));
-            return Create(doc.RootElement, options);
+            using (var doc = JsonDocument.Parse(json, GetDocumentOptions(options)))
+            {
+                return Create(doc.RootElement.Clone(), options);
+            }
         }
 
         /// <summary>
@@ -116,8 +124,10 @@ namespace Dynamic.Json
         /// <returns></returns>
         public static dynamic Parse(ReadOnlySequence<byte> json, JsonSerializerOptions options = null)
         {
-            var doc = JsonDocument.Parse(json, GetDocumentOptions(options));
-            return Create(doc.RootElement, options);
+            using (var doc = JsonDocument.Parse(json, GetDocumentOptions(options)))
+            {
+                return Create(doc.RootElement.Clone(), options);
+            }
         }
 
         /// <summary>
@@ -135,8 +145,10 @@ namespace Dynamic.Json
             if (json == null)
                 throw new ArgumentNullException(nameof(json));
 
-            var doc = await JsonDocument.ParseAsync(json, GetDocumentOptions(options), cancellationToken);
-            return Create(doc.RootElement, options);
+            using (var doc = await JsonDocument.ParseAsync(json, GetDocumentOptions(options), cancellationToken))
+            {
+                return Create(doc.RootElement.Clone(), options);
+            }
         }
         #endregion
 
@@ -153,9 +165,9 @@ namespace Dynamic.Json
                 throw new ArgumentNullException(nameof(file));
 
             using (var stream = new FileStream(file, FileMode.Open))
+            using (var doc = JsonDocument.Parse(stream, GetDocumentOptions(options)))
             {
-                var doc = JsonDocument.Parse(stream, GetDocumentOptions(options));
-                return Create(doc.RootElement, options);
+                return Create(doc.RootElement.Clone(), options);
             }
         }
 
@@ -175,9 +187,9 @@ namespace Dynamic.Json
                 throw new ArgumentNullException(nameof(file));
 
             using (var stream = new FileStream(file, FileMode.Open))
+            using (var doc = await JsonDocument.ParseAsync(stream, GetDocumentOptions(options), cancellationToken))
             {
-                var doc = await JsonDocument.ParseAsync(stream, GetDocumentOptions(options), cancellationToken);
-                return Create(doc.RootElement, options);
+                return Create(doc.RootElement.Clone(), options);
             }
         }
         #endregion
@@ -200,9 +212,9 @@ namespace Dynamic.Json
 
             using (var client = new HttpClient())
             using (var stream = await client.GetStreamAsync(uri))
+            using (var doc = await JsonDocument.ParseAsync(stream, GetDocumentOptions(options), cancellationToken))
             {
-                var doc = await JsonDocument.ParseAsync(stream, GetDocumentOptions(options), cancellationToken);
-                return Create(doc.RootElement, options);
+                return Create(doc.RootElement.Clone(), options);
             }
         }
 
@@ -223,9 +235,9 @@ namespace Dynamic.Json
 
             using (var client = new HttpClient())
             using (var stream = await client.GetStreamAsync(uri))
+            using (var doc = await JsonDocument.ParseAsync(stream, GetDocumentOptions(options), cancellationToken))
             {
-                var doc = await JsonDocument.ParseAsync(stream, GetDocumentOptions(options), cancellationToken);
-                return Create(doc.RootElement, options);
+                return Create(doc.RootElement.Clone(), options);
             }
         }
         #endregion

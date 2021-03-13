@@ -36,7 +36,8 @@ namespace Dynamic.Json.Benchmark
         [Benchmark(Baseline = true)]
         public HeaderObject SystemTextJsonExtract()
         {
-            var json = JsonDocument.Parse(Text).RootElement;
+            using var doc = JsonDocument.Parse(Text);
+            var json = doc.RootElement;
             return new HeaderObject
             {
                 level = json.GetProperty("header").GetProperty("level").GetInt64(),
