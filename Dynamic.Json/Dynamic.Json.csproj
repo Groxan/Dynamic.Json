@@ -15,8 +15,8 @@
 
     <Authors>Groxan</Authors>
     <Product>Dynamic.Json</Product>
-    <Description>Dynamic JSON wrapper for super-neat, fast and low-allocating working with JSON, based on the new System.Text.Json (.NET Standard 2.0)</Description>
-    <Version>1.3.0</Version>
+    <Description>Dynamic JSON wrapper for super-neat, fast and low-allocating working with JSON, based on System.Text.Json (.NET Standard 2.0)</Description>
+    <Version>1.4.0</Version>
     <Copyright>Copyright © Maksim Strebkov</Copyright>
   </PropertyGroup>
   
