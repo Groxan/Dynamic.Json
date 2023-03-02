@@ -117,11 +117,11 @@ DateTime unixTimeMs = json.UnixTimeMs; // or if it's Unix time in milliseconds
 One can think that using dynamic wrapper brings a huge overhead, **but it's actually not**. [Here is a simple benchmark](https://github.com/Groxan/Dynamic.Json/blob/master/Dynamic.Json.Benchmarks/DJsonBenchmarks.cs), comparing `DJson` with `JsonDocument` from `System.Text.Json` and `JToken` from `Newtonsoft.Json`:
 
 ````
-|         Method |     Mean |     Error |    StdDev | Ratio | RatioSD |  Gen 0 | Allocated |
+|         Method |     Mean |     Error |    StdDev | Ratio | RatioSD |   Gen0 | Allocated |
 |--------------- |---------:|----------:|----------:|------:|--------:|-------:|----------:|
-| SystemTextJson | 5.367 us | 0.0251 us | 0.0235 us |  1.00 |    0.00 | 0.5493 |   2.25 KB |
-|          DJson | 6.947 us | 0.1375 us | 0.1286 us |  1.29 |    0.03 | 1.0300 |   4.16 KB |
-|     Newtonsoft | 9.288 us | 0.1479 us | 0.1384 us |  1.73 |    0.03 | 2.1820 |   8.97 KB |
+| SystemTextJson | 3.046 us | 0.0590 us | 0.0655 us |  1.00 |    0.00 | 0.1945 |   1.21 KB |
+|          DJson | 4.111 us | 0.0308 us | 0.0257 us |  1.35 |    0.03 | 0.5722 |   3.53 KB |
+|     Newtonsoft | 7.003 us | 0.1357 us | 0.1946 us |  2.29 |    0.09 | 1.4496 |   8.91 KB |
 ````
 
 Of course, using `.Deserialize<T>()` would be even faster, but we're only talking about dynamic-like access, when you will likely spend a lot more time describing the types do deserialize your JSON to.
