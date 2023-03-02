@@ -99,6 +99,13 @@ namespace Dynamic.Json.Tests
             var json = DJson.Parse(@"{ ""value"": 3.14 }");
             Assert.Equal(3.14F, (float)json.value);
         }
+        
+        [Fact]
+        public void TestStringFloat()
+        {
+            var json = DJson.Parse(@"{ ""value"": ""-3.14"" }");
+            Assert.Equal(-3.14F, (float)json.value);
+        }
 
         [Fact]
         public void TestDouble()
@@ -108,10 +115,24 @@ namespace Dynamic.Json.Tests
         }
 
         [Fact]
+        public void TestStringDouble()
+        {
+            var json = DJson.Parse(@"{ ""value"": ""-3.1415926535"" }");
+            Assert.Equal(-3.1415926535, (double)json.value);
+        }
+
+        [Fact]
         public void TestDecimal()
         {
             var json = DJson.Parse(@"{ ""value"": 3.14159265358979323846264338327950288419716939937510582097494459230781640628620899 }");
             Assert.Equal(3.14159265358979323846264338327950288419716939937510582097494459230781640628620899M, (decimal)json.value);
+        }
+
+        [Fact]
+        public void TestStringDecimal()
+        {
+            var json = DJson.Parse(@"{ ""value"": ""-3.14159265358979323846264338327950288419716939937510582097494459230781640628620899"" }");
+            Assert.Equal(-3.14159265358979323846264338327950288419716939937510582097494459230781640628620899M, (decimal)json.value);
         }
 
         [Fact]
