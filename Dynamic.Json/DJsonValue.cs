@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Globalization;
 using System.Text.Json;
 
 namespace Dynamic.Json
@@ -153,7 +154,8 @@ namespace Dynamic.Json
                 result = value;
                 return true;
             }
-            else if (element.ValueKind == JsonValueKind.String && decimal.TryParse(element.GetString(), out var parsed))
+            else if (element.ValueKind == JsonValueKind.String && decimal.TryParse(
+                    element.GetString(), NumberStyles.Number, CultureInfo.InvariantCulture, out var parsed))
             {
                 result = parsed;
                 return true;
@@ -172,7 +174,8 @@ namespace Dynamic.Json
                 result = value;
                 return true;
             }
-            else if (element.ValueKind == JsonValueKind.String && double.TryParse(element.GetString(), out var parsed))
+            else if (element.ValueKind == JsonValueKind.String && double.TryParse(
+                    element.GetString(), NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out var parsed))
             {
                 result = parsed;
                 return true;
@@ -191,7 +194,8 @@ namespace Dynamic.Json
                 result = value;
                 return true;
             }
-            else if (element.ValueKind == JsonValueKind.String && float.TryParse(element.GetString(), out var parsed))
+            else if (element.ValueKind == JsonValueKind.String && float.TryParse(
+                    element.GetString(), NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out var parsed))
             {
                 result = parsed;
                 return true;
