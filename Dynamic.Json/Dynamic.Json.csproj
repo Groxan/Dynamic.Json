@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1;net6.0;net7.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -20,7 +20,7 @@
     <Copyright>Copyright © Maksim Strebkov</Copyright>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'== 'netStandard2.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Text.Json" Version="7.0.2" />
   </ItemGroup>
 
